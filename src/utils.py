@@ -11,6 +11,9 @@ def read_fits(filename,hdu=0):
 
 def read_fits_head(filename,hdu=0):
     """extract the header from a FITS file"""
+    if hdu == 0:
+        # This works for both text and fits files
+        return fits.Header.fromfile(filename)
     hdul = fits.open(filename)
     hdr = hdul[hdu].header
     hdul.close()
