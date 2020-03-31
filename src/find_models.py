@@ -80,7 +80,7 @@ def find_models(frame_list,prfmap,opt={},debug=False,verbose=False,parallel=Fals
         nproc = 0
         proc = []
         output0 = '{}/fm_tmp_{}.txt'
-        df = nchunk
+        df = nchunk if nchunk > 0 else 1
         for b in range(0,nfram,df):
             if b+nchunk>=nfram: df = nfram-b
             if verbose: print('frames from {} to {}'.format(b+1,b+df+1))

@@ -71,6 +71,8 @@ def rotate_and_stack(models,opt={},id_list=[],parallel=False,verbose=False):
     if parallel:
         n_avail =  mp.cpu_count() - 1  #keep a core free, just in case
         chunk = nid//n_avail
+        if chunk == 0:
+            chunk = 1
         if verbose: print(n_avail,' cores parallel run')
         #loop over grid_points
         pool = mp.Pool(processes=n_avail-1)  #no real reason to keep one core free
